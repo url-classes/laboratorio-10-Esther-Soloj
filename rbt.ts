@@ -94,6 +94,8 @@ export class RBTree {
     }
 
     public printAll(): void {
+        // imprimir en orden ascendente 
+        console.log("Orden ascendente ")
         this.printNode(this.root);
     }
 
@@ -133,4 +135,17 @@ export class RBTree {
         // corregir inserción
         this.fixInsert(newNode);
     }
+
+        // Método para buscar un número en específico.
+    public searchNode(data: number, node: NodeRBT): NodeRBT {
+        if (node === this.leaf || data === node.getData()) {
+            return node;
+        }
+        if (data < node.getData()) {
+            return this.searchNode(data, node.getLeftChild());
+        } else {
+            return this.searchNode(data, node.getRightChild());
+        }
+    }
+      
 }
